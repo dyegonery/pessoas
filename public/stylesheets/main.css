@@ -1,0 +1,11 @@
+.container>h1 {
+	margin-bottom: 40px;
+}
+
+input[type="submit"][value="Cadastrar Pessoa"] {
+	margin-bottom: 20px;
+}
+
+input[value="Alterar"] {
+	margin-right: 15px;
+}

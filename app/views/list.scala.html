@@ -1,0 +1,49 @@
+@(pessoas: List[Pessoa])
+
+@import helper._
+
+@main{
+	<div class="container">
+		<h1>Cadastro de pessoas</h1>
+
+		<div class="row">
+			<div class="col-xs-8">
+				@form(routes.Application.create()) {
+					<input type="submit" value="Cadastrar Pessoa" class="btn btn-success pull-right"/>
+				}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-8">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Lista de Pessoas
+					</div>
+					<div class="panel-body">
+						<ul class="list-group">
+							@if(pessoas.isEmpty()) {
+								<li class="list-group-item">Nenhuma pessoa cadastrada!</li>
+							}
+							@for(pessoa <- pessoas) {
+								<li class="list-group-item">
+									<div class="col-xs-8">
+										@pessoa.nome
+									</div>
+									<div class="col-xs-4">
+										@form(routes.Application.update(pessoa.id)) {
+											<input type="submit" value="Alterar" class="btn-btn-warning"/>
+										}
+										@form(routes.Application.delete(pessoa.id)) {
+											<input type="submit" value="Excluir" class="btn-btn-danger"/>
+										}
+									</div>
+								</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
