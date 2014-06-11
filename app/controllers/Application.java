@@ -5,13 +5,18 @@ import play.mvc.*;
 import play.data.*;
 import static play.data.Form.*;
 
+import play.libs.Json;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
 import views.html.*;
 
 import models.*;
 
-public class Application extends Controller {
+import java.util.List;
+import java.util.Iterator;
 
-    static Form<Pessoa> form_pessoa = Form.form(Pessoa.class);
+public class Application extends Controller {
 
     /**
     * Result index, que redireciona para list
@@ -92,5 +97,19 @@ public class Application extends Controller {
         pessoaForm.get().save();
 
         return redirect(routes.Application.list());
+    }
+
+
+    /**
+    * Método que para consulta de pessoas via JSON
+    */
+    @BodyParser.Of(BodyParser.Json.class)
+    public static Result restPage()
+    {
+        List<Pessoa> pessoas = Pessoa.all();
+        if (pessoas != null)
+            return ok(Json.toJson(pessoas));
+        else
+            return badRequest("Nenhuma pessoa cadastrada!");
     }
 }
