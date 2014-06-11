@@ -17,4 +17,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 # Url disponivel para consulta aos dados via XML
-GET		/rest_service/:ext				controllers.Application.restPage(ext: String)
+GET		/rest_service			controllers.Application.restPage()

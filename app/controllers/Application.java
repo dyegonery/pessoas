@@ -6,8 +6,6 @@ import play.data.*;
 import static play.data.Form.*;
 
 import play.libs.Json;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import views.html.*;
 
@@ -103,7 +101,6 @@ public class Application extends Controller {
     /**
     * Método que para consulta de pessoas via JSON
     */
-    @BodyParser.Of(BodyParser.Json.class)
     public static Result restPage()
     {
         List<Pessoa> pessoas = Pessoa.all();

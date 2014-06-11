@@ -11,7 +11,6 @@ import play.data.validation.*;
 @Entity
 public class Pessoa extends Model {
 
-
 	@Id
 	public Long id;
 
