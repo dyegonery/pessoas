@@ -18,14 +18,26 @@ public class Pessoa extends Model {
 	@Constraints.Required
 	public String nome;
 
-	@Formats.DateTime(pattern="dd/MM/yyyy")
+	@Formats.DateTime(pattern="dd-MM-yyyy")
 	public Date data_nascimento;
 
 	public static Finder<Long,Pessoa> find = new Finder<Long,Pessoa>(Long.class, Pessoa.class);
 
+	/**
+	* Lista todas as pessoas cadastradas
+	*/
 	public static List<Pessoa> all()
 	{
 		return find.all();
+	}
+
+	/**
+	* Apaga pessoa do banco de dados
+	* @param id Id da pessoa
+	*/
+	public static void delete(Long id)
+	{
+		find.ref(id).delete();
 	}
 
 }

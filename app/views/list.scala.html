@@ -29,13 +29,16 @@
 								<li class="list-group-item">
 									<div class="col-xs-8">
 										@pessoa.nome
+										@if(pessoa.data_nascimento != null) {
+											(@pessoa.data_nascimento.format("dd/MM/yyyy"))
+										}
 									</div>
-									<div class="col-xs-4">
-										@form(routes.Application.update(pessoa.id)) {
-											<input type="submit" value="Alterar" class="btn-btn-warning"/>
+									<div class="col-xs-4 buttons">
+										@form(routes.Application.edit(pessoa.id)) {
+											<input type="submit" value="Alterar" class="btn btn-warning"/>
 										}
 										@form(routes.Application.delete(pessoa.id)) {
-											<input type="submit" value="Excluir" class="btn-btn-danger"/>
+											<input type="submit" value="Excluir" class="btn btn-danger"/>
 										}
 									</div>
 								</li>

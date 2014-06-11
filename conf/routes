@@ -7,7 +7,9 @@ GET     /                           controllers.Application.index()
 
 GET		/pessoas					controllers.Application.list()
 GET		/pessoas/create				controllers.Application.create()
-GET		/pessoas/update/:id 		controllers.Application.update(id: Long)
+POST	/pessoas/save				controllers.Application.save()
+GET		/pessoas/edit/:id 			controllers.Application.edit(id: Long)
+POST	/pessoas/update/:id 		controllers.Application.update(id: Long)
 POST	/pessoas/delete/:id			controllers.Application.delete(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
